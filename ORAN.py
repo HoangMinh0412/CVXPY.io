@@ -1,8 +1,6 @@
 import cvxpy as cp
 import numpy as np
 
-# ----------------------------- Tham số -----------------------------
-# Kích thước hệ thống (có thể thay đổi theo thực tế)
 I = 2   # Số RU
 B = 3   # Số RB mỗi RU
 K = 4   # Số người dùng (slice)
@@ -15,11 +13,9 @@ RU_Pmax = 10.0      # Công suất tối đa của mỗi RU (tổng trên các R
 RB_Pmax = 5.0       # Giới hạn công suất mỗi RB (dùng cho quy đổi liên quan đến x và p)
 RB_bw = 1.0         # Băng thông của mỗi RB
 
-# --- Các tham số kênh ---
 # alpha[i,b,k] gồm hiệu dụng của kênh, tác động của P, hệ số bình thường hóa (B,No,...)
 alpha = np.random.uniform(low=0.5, high=1.5, size=(I, B, K))
-
-# ----------------------------- Biến quyết định -----------------------------
+# các biến
 # x[i,b,k]: biến nhị phân =1 nếu RB b của RU i được cấp cho người dùng k
 x = cp.Variable((I, B, K), boolean=True)
 
