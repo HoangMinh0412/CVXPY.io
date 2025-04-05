@@ -1,0 +1,2 @@
+id,numuser,numRU,RBeachRU,time_ILP,throughput_ILP,numuser_ILP,check_ILP,step_SA,numuser_SA,throughput_SA,time_SA,time_rate,serve_rate,throughput_rate
+0,10,10,[5, 6, 7, 8, 9, 10, 5, 5, 5, 5],1.443434238433838,10.115840897620284,4,True,5000,4,6.878771810381794,30.0,0.048114474614461264,100.0,-3.23706908723849
