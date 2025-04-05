@@ -150,21 +150,36 @@ print(",".join(str(item) for item in csv_row))
 
 """
     Lưu thông tin vào file output (csv)
-"""
+"""  # Tên file CSV để lưu kết quả
 def write_data_test(output_file: str, id: int, numuser: int, numRU: int, RBeachRU: str,
                     time_ILP: float, throughput_ILP: float, numuser_ILP: int, check_ILP: bool,
-                    step_SA: int, numuser_SA: int, throughput_SA: float, time_SA: float):
+                    step_SA: int, numuser_SA: int, throughput_SA: float, time_SA: float,
+                    time_rate: float, serve_rate: float, throughput_rate: float):
     with open(output_file, 'a', newline='', encoding='utf-8') as opf:
         writer = csv.writer(opf)
-        
-        # Tính toán các chỉ số bổ sung
-        time_rate = time_ILP / time_SA if time_SA != 0 else None
-        serve_rate = (numuser_SA / numuser_ILP) * 100 if numuser_ILP != 0 else 0
-        throughput_rate = ((throughput_SA - throughput_ILP) / throughput_ILP) * 100 if throughput_ILP != 0 else 0
         
         # Ghi dữ liệu vào file
         writer.writerow([
             id, numuser, numRU, RBeachRU, time_ILP, throughput_ILP, numuser_ILP, check_ILP,
             step_SA, numuser_SA, throughput_SA, time_SA, time_rate, serve_rate, throughput_rate
         ])
-        
+        # Gọi hàm write_data_test để lưu dữ liệu
+output_file = "C:\\Users\\ASUS\\Documents\\output_results.csv" # Tên file CSV để lưu kết quả
+write_data_test(
+    output_file=output_file,
+    id=csv_id,
+    numuser=csv_numuser,
+    numRU=csv_numRU,
+    RBeachRU=csv_RBeachRU,
+    time_ILP=time_ILP,
+    throughput_ILP=throughput_ILP,
+    numuser_ILP=numuser_ILP,
+    check_ILP=check_ILP,
+    step_SA=step_SA,
+    numuser_SA=numuser_SA,
+    throughput_SA=throughput_SA,
+    time_SA=time_SA,
+    time_rate=time_rate,
+    serve_rate=serve_rate,
+    throughput_rate=throughput_rate
+)
